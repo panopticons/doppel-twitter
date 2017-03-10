@@ -42,8 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
 
-  func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-    
+  func application(_ app: UIApplication, openURL url: URL, options: [String : AnyObject]) -> Bool {
+    print(url.description)
     TwitterClient.sharedInstance?.handleOpenUrl(url: url as NSURL)
     
     return true

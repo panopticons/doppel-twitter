@@ -31,6 +31,7 @@ class Tweet: NSObject {
       
       time = formatter.date(from: timeString) as NSDate?
     }
+    user = User(dictionary:(dictionary["user"] as? NSDictionary)!)
   }
   
   class func tweetsWithArray(dictionaries: [NSDictionary]) -> [Tweet]

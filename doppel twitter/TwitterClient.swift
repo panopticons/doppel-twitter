@@ -35,10 +35,10 @@ class TwitterClient: BDBOAuth1SessionManager {
       
       success(user)
       
-      print("name: \(user.name)")
-      print("screenname: \(user.userName)")
-      print("profile image: \(user.profUrl)")
-      print("description: \(user.tag)")
+      print("name: \(user.name!)")
+      print("screenname: \(user.userName!)")
+      print("profile image: \(user.profUrl!)")
+      print("description: \(user.tag!)")
     }, failure: { (task: URLSessionDataTask?, error: Error) in
       failure(error as NSError)
     })
@@ -51,11 +51,13 @@ class TwitterClient: BDBOAuth1SessionManager {
     loginFailure = failure
     
     TwitterClient.sharedInstance?.deauthorize()
-    TwitterClient.sharedInstance?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: NSURL(string: "doppel twitter://oauth") as URL!, scope: nil, success: { (requestToken:BDBOAuth1Credential?) in
-        print("TEST1")
+    TwitterClient.sharedInstance?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: NSURL(string: "doppel-twitter://oauth") as URL!, scope: nil, success: { (requestToken:BDBOAuth1Credential?) in
+        print("I got a token")
         let url = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken!.token!)")!
       
-      UIApplication.shared.openURL(url as URL)
+        //print(url)
+        UIApplication.shared.openURL(url as URL)
+        print("After")
     
     }, failure: { (error: Error?) in
       print("error: \(error?.localizedDescription)")
@@ -76,9 +78,10 @@ class TwitterClient: BDBOAuth1SessionManager {
   
   func handleOpenUrl(url: NSURL)
   {
+    print("Here")
     let requestToken = BDBOAuth1Credential(queryString: url.query)
     fetchAccessToken(withPath: "https://api.twitter.com/oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
-      print("TEST2")
+      print("I got an access token")
       
       self.currentAccount(success: { (user: User) in
         User.currentUser = user

@@ -44,7 +44,7 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
   }
   
   func loadMoreData() {
-    count += 20
+    count += 10
     
     TwitterClient.sharedInstance?.homeTimeline(count: count, success: { (tweets: [Tweet]) in
       self.tweets = tweets
@@ -55,6 +55,7 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
       print(error.localizedDescription)
 
       self.loading = false
+      print("LOADING")
     })
   }
   
@@ -66,12 +67,18 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
       self.tweets = tweets
       self.tweetsTable.reloadData()
       
+      for tweet in tweets {
+        print(tweet.text)
+      }
+      
     }, failure: { (error: NSError) in
       print(error.localizedDescription)
     })
     
-    tweetsTable.rowHeight = UITableViewAutomaticDimension
-    tweetsTable.estimatedRowHeight = 200
+    tweetsTable.delegate = self
+    tweetsTable.dataSource = self
+    //tweetsTable.rowHeight = UITableViewAutomaticDimension
+    //tweetsTable.estimatedRowHeight = 200
     
   }
   
@@ -86,16 +93,17 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if tweets != nil {
+      print("TEST")
       return tweets.count
     }
     else {
       return 0
+      print("TESTING")
     }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "TweetViewCell", for: indexPath) as! TweetViewCell
-    
     cell.tweet = tweets[indexPath.row]
     cell.selectionStyle = .none
     

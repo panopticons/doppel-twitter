@@ -25,6 +25,7 @@ class User: NSObject {
     name = dictionary["name"] as? NSString
     userName = dictionary["screen_name"] as? NSString
     tag = dictionary["description"] as? NSString
+    //date = dictiona
     
     let profUrlString = dictionary["profile_image_url_https"] as? String
     if let profUrlString = profUrlString {
