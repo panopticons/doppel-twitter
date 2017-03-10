@@ -89,11 +89,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BgK-xL-Y5Z">
-                                                    <rect key="frame" x="308" y="12" width="50" height="25"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="OWL-h9-c5j"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BgK-xL-Y5Z">
+                                                    <rect key="frame" x="320" y="12" width="38" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -108,7 +105,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" text="Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dc-YA-df8">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="999" misplaced="YES" text="Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dc-YA-df8">
                                                     <rect key="frame" x="167" y="12" width="57" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -129,6 +126,7 @@
                                                 <constraint firstItem="0dc-YA-df8" firstAttribute="leading" secondItem="LRD-H4-1bx" secondAttribute="trailing" constant="13.5" id="mKD-sK-FmM"/>
                                                 <constraint firstItem="BgK-xL-Y5Z" firstAttribute="leading" secondItem="0dc-YA-df8" secondAttribute="trailing" constant="84" id="oPP-kM-7fL"/>
                                                 <constraint firstItem="BgK-xL-Y5Z" firstAttribute="trailing" secondItem="Hez-Dh-cLm" secondAttribute="trailing" constant="-1" id="qCF-q4-jAT"/>
+                                                <constraint firstItem="0dc-YA-df8" firstAttribute="leading" secondItem="LRD-H4-1bx" secondAttribute="trailing" constant="13.5" id="qtU-Hb-CNl"/>
                                                 <constraint firstItem="LRD-H4-1bx" firstAttribute="leading" secondItem="tlZ-uH-175" secondAttribute="trailing" constant="16" id="rZq-QZ-2eR"/>
                                                 <constraint firstItem="LRD-H4-1bx" firstAttribute="firstBaseline" secondItem="0dc-YA-df8" secondAttribute="firstBaseline" id="ryt-Bo-pQX"/>
                                                 <constraint firstItem="tlZ-uH-175" firstAttribute="leading" secondItem="l5h-jj-5en" secondAttribute="leadingMargin" constant="9" id="uzx-kR-o73"/>
@@ -156,7 +154,13 @@
                             <constraint firstAttribute="trailing" secondItem="OGe-hc-UGB" secondAttribute="trailing" id="gQl-x0-rKC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="VGK-aA-FJ6"/>
+                    <navigationItem key="navigationItem" id="VGK-aA-FJ6">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="zax-Uo-nUu">
+                            <connections>
+                                <action selector="onLogoutButton:" destination="AbU-O5-pV3" id="w6d-nF-cTY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tweetsTable" destination="OGe-hc-UGB" id="D8w-yj-kZk"/>
                     </connections>
@@ -168,7 +172,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Tbf-ZY-w5p">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dnT-iG-dwP" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="tweetNav" automaticallyAdjustsScrollViewInsets="NO" hidesBarsWhenKeyboardAppears="YES" id="dnT-iG-dwP" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HYW-fx-dzT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

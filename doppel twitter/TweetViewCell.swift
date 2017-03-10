@@ -25,6 +25,7 @@ class TweetViewCell: UITableViewCell {
         tPic.setImageWith(imageURL as URL)
       }
     tContent.text = self.tweet.text! as String?
+    tDate.text = String(describing: self.tweet.time!)
     }
   }
   

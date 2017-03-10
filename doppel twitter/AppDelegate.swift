@@ -17,6 +17,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    
+    if User.currentUser != nil {
+      print("!!!!!!")
+      
+      let storyB = UIStoryboard(name: "Main", bundle: nil)
+      let viewC = storyB.instantiateViewController(withIdentifier: "tweetNav")
+      
+      window?.rootViewController = viewC
+    }
+    
+    NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "UserDidLogout"), object: nil, queue: OperationQueue.main) { (NSNotification) ->
+        Void in
+      let storyB = UIStoryboard(name: "Main", bundle: nil)
+      let viewC = storyB.instantiateInitialViewController()
+     
+      self.window?.rootViewController = viewC
+    }
+    
     return true
   }
 

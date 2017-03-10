@@ -87,8 +87,8 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
     // Dispose of any resources that can be recreated.
   }
   
-  @IBAction func onLogoutButtton(_ sender: Any) {
-    TwitterClient.sharedInstance?.logout()
+  @IBAction func onLogoutButton(_ sender: UIBarButtonItem) {
+    TwitterClient.sharedInstance?.logout()    
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
