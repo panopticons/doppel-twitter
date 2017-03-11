@@ -10,6 +10,14 @@ import UIKit
 
 class TweetDetailsViewController: UIViewController {
 
+  @IBOutlet weak var nameL: UILabel!
+  @IBOutlet weak var usernameL: UILabel!
+  @IBOutlet weak var picB: UIImageView!
+  @IBOutlet weak var contentL: UILabel!
+  @IBOutlet weak var retweetValL: UILabel!
+  @IBOutlet weak var favoriteValL: UILabel!
+  @IBOutlet weak var dateL: UILabel!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +29,9 @@ class TweetDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+  @IBAction func backButton(_ sender: Any) {
+    self.dismiss(animated: true, completion: nil)
+  }
 
     /*
     // MARK: - Navigation

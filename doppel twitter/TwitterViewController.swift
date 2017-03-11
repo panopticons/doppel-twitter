@@ -49,11 +49,12 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
     TwitterClient.sharedInstance?.homeTimeline(count: count, success: { (tweets: [Tweet]) in
       self.tweets = tweets
       
+      self.loading = false
       self.tweetsTable.reloadData()
+      
       
     }, failure: { (error: NSError) in
       print(error.localizedDescription)
-
       self.loading = false
       print("LOADING")
     })
@@ -105,10 +106,12 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "TweetViewCell", for: indexPath) as! TweetViewCell
     cell.tweet = tweets[indexPath.row]
-    cell.selectionStyle = .none
+    //cell.selectionStyle = .none
     
     return cell
-  }    /*
+  }
+  
+  /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

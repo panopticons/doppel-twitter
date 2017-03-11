@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		01617F946E63C86F8AB70E16 /* Pods_doppel_twitterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 734ABD442E60459E76C52D6B /* Pods_doppel_twitterTests.framework */; };
 		2B9FF4E28628AC812E74CCF2 /* Pods_doppel_twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B76AF41F30A71296397A53C /* Pods_doppel_twitter.framework */; };
+		C10410691E738BA2001F55AD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10410681E738BA2001F55AD /* ProfileViewController.swift */; };
+		C104106B1E738CEA001F55AD /* HomeTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C104106A1E738CEA001F55AD /* HomeTimeViewController.swift */; };
+		C104106D1E738DC0001F55AD /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C104106C1E738DC0001F55AD /* ComposeViewController.swift */; };
+		C104106F1E738DE6001F55AD /* TweetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C104106E1E738DE6001F55AD /* TweetDetailsViewController.swift */; };
 		C12CF76B1E5D30B300B3C79A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CF76A1E5D30B300B3C79A /* AppDelegate.swift */; };
 		C12CF76D1E5D30B300B3C79A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CF76C1E5D30B300B3C79A /* LoginViewController.swift */; };
 		C12CF7701E5D30B300B3C79A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12CF76E1E5D30B300B3C79A /* Main.storyboard */; };
@@ -50,6 +54,10 @@
 		7783B9EC036DAF6BF0A3D22F /* Pods-doppel twitterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-doppel twitterUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-doppel twitterUITests/Pods-doppel twitterUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		859450143100F858891DD8DE /* Pods-doppel twitterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-doppel twitterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-doppel twitterTests/Pods-doppel twitterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9046FFD32B4E13B331060B37 /* Pods-doppel twitterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-doppel twitterUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-doppel twitterUITests/Pods-doppel twitterUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C10410681E738BA2001F55AD /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C104106A1E738CEA001F55AD /* HomeTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTimeViewController.swift; sourceTree = "<group>"; };
+		C104106C1E738DC0001F55AD /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		C104106E1E738DE6001F55AD /* TweetDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetailsViewController.swift; sourceTree = "<group>"; };
 		C12CF7671E5D30B300B3C79A /* doppel twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "doppel twitter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12CF76A1E5D30B300B3C79A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C12CF76C1E5D30B300B3C79A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -181,8 +189,12 @@
 			isa = PBXGroup;
 			children = (
 				C136F8811E62AEB900825B23 /* TwitterViewController.swift */,
+				C104106E1E738DE6001F55AD /* TweetDetailsViewController.swift */,
+				C104106C1E738DC0001F55AD /* ComposeViewController.swift */,
 				C136F8891E6665DB00825B23 /* TweetViewCell.swift */,
 				C12CF76C1E5D30B300B3C79A /* LoginViewController.swift */,
+				C10410681E738BA2001F55AD /* ProfileViewController.swift */,
+				C104106A1E738CEA001F55AD /* HomeTimeViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -487,10 +499,14 @@
 			files = (
 				C136F8861E66510700825B23 /* User.swift in Sources */,
 				C136F8881E665CC400825B23 /* Tweet.swift in Sources */,
+				C104106B1E738CEA001F55AD /* HomeTimeViewController.swift in Sources */,
 				C136F8821E62AEB900825B23 /* TwitterViewController.swift in Sources */,
+				C104106F1E738DE6001F55AD /* TweetDetailsViewController.swift in Sources */,
 				C12CF76D1E5D30B300B3C79A /* LoginViewController.swift in Sources */,
+				C104106D1E738DC0001F55AD /* ComposeViewController.swift in Sources */,
 				C136F88C1E66679B00825B23 /* TwitterClient.swift in Sources */,
 				C136F88A1E6665DB00825B23 /* TweetViewCell.swift in Sources */,
+				C10410691E738BA2001F55AD /* ProfileViewController.swift in Sources */,
 				C12CF76B1E5D30B300B3C79A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
