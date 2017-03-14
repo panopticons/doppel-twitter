@@ -57,7 +57,7 @@ Describe any challenges encountered while building the app.
     See the License for the specific language governing permissions and
     limitations under the License.
 ----------------------------------------------------------------------------------------------------------------------------
-# Project 5 - *Name of App Here*
+# Project 5 - DoppelTwitter
 
 Time spent: 48 hours spent in total
 
@@ -99,7 +99,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/TY3CacJ.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -107,9 +107,11 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Describe any challenges encountered while building the app.
 
+I made a profile page and a home timeline but was unable to make the transfers go smoothly. Replying to a user's tweet brings up my twitter account instead of that user's.
+
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright 2017 panopticons
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
