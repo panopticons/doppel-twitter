@@ -99,7 +99,6 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     else {
       return 0
-      print("TESTING")
     }
   }
   
@@ -109,6 +108,20 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
     //cell.selectionStyle = .none
     
     return cell
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let dest = segue.destination as! UINavigationController
+    let realDest = dest.topViewController as! TweetDetailsViewController
+    
+    realDest.name = (sender as! TweetViewCell).tName.text
+    realDest.username = (sender as! TweetViewCell).tScreen.text
+    realDest.date = (sender as! TweetViewCell).tDate.text
+    realDest.content = (sender as! TweetViewCell).tContent.text
+    realDest.picture = (sender as! TweetViewCell).tPic.image
+    realDest.favorite = (sender as! TweetViewCell).fav
+    realDest.retweet = (sender as! TweetViewCell).ret
+    //realDest.reply = (sender as TweetViewCell).re
   }
   
   /*

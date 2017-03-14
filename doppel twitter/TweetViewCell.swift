@@ -15,6 +15,11 @@ class TweetViewCell: UITableViewCell {
   @IBOutlet weak var tContent: UILabel!
   @IBOutlet weak var tScreen: UILabel!
   @IBOutlet weak var tDate: UILabel!
+  @IBOutlet weak var tReplyI: UIImageView!
+  @IBOutlet weak var tRetweetI: UIImageView!
+  @IBOutlet weak var tFaveI: UIImageView!
+  var ret: String!
+  var fav: String!
 
   var tweet: Tweet! {
     didSet{
@@ -26,6 +31,11 @@ class TweetViewCell: UITableViewCell {
       }
     tContent.text = self.tweet.text! as String?
     tDate.text = String(describing: self.tweet.time!)
+    tReplyI.image = UIImage(named: "reply-icon.png")
+    tFaveI.image = UIImage(named: "favor-icon.png")
+    tRetweetI.image = UIImage(named: "retweet-icon.png")
+    ret = String(tweet.retweetCount)
+    fav = String(tweet.favoritesCount)
     }
   }
   

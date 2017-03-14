@@ -66,6 +66,27 @@ class TwitterClient: BDBOAuth1SessionManager {
     })
   }
   
+  func tweet(status: String, success: @escaping () -> (), failure: @escaping (NSError) -> () ) {
+    post("1.1/statuses/update.json", parameters: ["status": status], progress: nil, success: {( task: URLSessionDataTask, response: Any?) in
+      
+      success()
+      
+    }, failure: { (task: URLSessionDataTask?, error: Error) in
+      failure(error as NSError)
+    })
+  }
+  
+  
+  func reply(text: String, id: Int, success: @escaping () -> (), failure: @escaping (NSError) -> () ) {
+    post("1.1/statuses/update.json",parameters: [ "status": text, "in_reply_to_status_id": id], success: { (operation: URLSessionDataTask!, response: Any?) in
+      
+      success()
+      
+    }, failure: { (operation: URLSessionDataTask?, error: Error!) in
+      print(error)
+    })
+  }
+  
   func logout()
   {
     User.currentUser = nil
@@ -77,6 +98,17 @@ class TwitterClient: BDBOAuth1SessionManager {
     NotificationCenter.default.post(name: NSNotification.Name(rawValue: User.UserDidLogoutNotification), object: nil)
   }
   
+  func userTimeline(myUser: String, success: @escaping ([Tweet]) -> (), failure: @escaping (NSError) ->() ) {
+    get("1.1/statuses/user_timeline.json", parameters: ["screen_name": myUser], progress: nil, success: {( task: URLSessionDataTask, response: Any?) -> Void in
+      let dictionaries = response as! [NSDictionary]
+      
+      let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
+      success(tweets)
+      
+    }, failure: { (task: URLSessionDataTask?, error: Error) -> Void in
+      failure(error as NSError)
+    })
+  }
   func handleOpenUrl(url: NSURL)
   {
     print("Here")

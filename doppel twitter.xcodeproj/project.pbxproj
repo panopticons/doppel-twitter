@@ -25,6 +25,7 @@
 		C136F8881E665CC400825B23 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C136F8871E665CC400825B23 /* Tweet.swift */; };
 		C136F88A1E6665DB00825B23 /* TweetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C136F8891E6665DB00825B23 /* TweetViewCell.swift */; };
 		C136F88C1E66679B00825B23 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C136F88B1E66679B00825B23 /* TwitterClient.swift */; };
+		C16D38461E740E6B0050F86A /* twitter_assets in Resources */ = {isa = PBXBuildFile; fileRef = C16D38451E740E6B0050F86A /* twitter_assets */; };
 		DB200263CFDF4269891D87ED /* Pods_doppel_twitterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594FF45431E6E6FB50689DAC /* Pods_doppel_twitterUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		C136F8871E665CC400825B23 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		C136F8891E6665DB00825B23 /* TweetViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetViewCell.swift; sourceTree = "<group>"; };
 		C136F88B1E66679B00825B23 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
+		C16D38451E740E6B0050F86A /* twitter_assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = twitter_assets; path = ../../twitter_assets; sourceTree = "<group>"; };
 		CEFC524BFA25AC71E19669CA /* Pods-doppel twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-doppel twitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-doppel twitter/Pods-doppel twitter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,6 +162,7 @@
 				C136F8841E6650D100825B23 /* Model */,
 				C12CF76A1E5D30B300B3C79A /* AppDelegate.swift */,
 				C12CF7711E5D30B300B3C79A /* Assets.xcassets */,
+				C16D38451E740E6B0050F86A /* twitter_assets */,
 				C12CF7731E5D30B300B3C79A /* LaunchScreen.storyboard */,
 				C12CF7761E5D30B300B3C79A /* Info.plist */,
 				C136F8831E66508600825B23 /* View */,
@@ -335,6 +338,7 @@
 				C12CF7751E5D30B300B3C79A /* LaunchScreen.storyboard in Resources */,
 				C12CF7721E5D30B300B3C79A /* Assets.xcassets in Resources */,
 				C12CF7701E5D30B300B3C79A /* Main.storyboard in Resources */,
+				C16D38461E740E6B0050F86A /* twitter_assets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

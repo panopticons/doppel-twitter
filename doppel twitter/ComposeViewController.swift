@@ -8,11 +8,36 @@
 
 import UIKit
 
-class ComposeViewController: UIViewController {
+class ComposeViewController: UIViewController, UITextViewDelegate {
 
-    override func viewDidLoad() {
+  @IBOutlet weak var uPic: UIImageView!
+  @IBOutlet weak var userN: UILabel!
+  @IBOutlet weak var realN: UILabel!
+  @IBOutlet weak var compBox: UITextView!
+  @IBOutlet weak var remaining: UILabel!
+  var tweet: Tweet?
+  
+  override func viewDidLoad() {
         super.viewDidLoad()
-
+        compBox.becomeFirstResponder()
+      
+      if tweet == nil {
+        print("error")
+      }
+      
+      compBox.delegate = self
+      compBox.textColor = UIColor(red: 170/255, green: 184/255, blue: 194/255, alpha: 1)
+      
+      TwitterClient.sharedInstance?.currentAccount(success: { (user: User) in
+        self.uPic.setImageWith(user.profUrl as! URL)
+        self.userN.text = "@\(user.userName!)"
+        self.realN.text = user.name! as String
+      }, failure: { (error: NSError) in
+        print("error")
+      })
+      
+      
+      
         // Do any additional setup after loading the view.
     }
 
@@ -25,6 +50,64 @@ class ComposeViewController: UIViewController {
     self.dismiss(animated: true, completion: nil)
   }
 
+  @IBAction func tweet(_ sender: Any) {
+    if(compBox.text.isEmpty)
+    {
+      let alertController = UIAlertController(title: "Error", message: "Make sure Tweet has content", preferredStyle: .alert)
+      
+      // create an OK action
+      let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+        // handle response here.
+      }
+      // add the OK action to the alert controller
+      alertController.addAction(OKAction)
+      
+      present(alertController, animated: true) {
+        // optional code for what happens after the alert controller has finished presenting
+      }
+    }
+    else{
+      if tweet == nil {
+        TwitterClient.sharedInstance?.tweet(status: compBox.text!, success: {
+          print("success")
+          self.dismiss(animated: true, completion: nil)
+        }, failure: { (error: NSError) in
+          let alertController = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
+          
+          // create an OK action
+          let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            // handle response here.
+          }
+          // add the OK action to the alert controller
+          alertController.addAction(OKAction)
+          
+          self.present(alertController, animated: true) {
+          }
+        })
+      }
+      else{
+        TwitterClient.sharedInstance?.reply(text: compBox.text!, id: Int(tweet!.id! as String)! , success: {
+            self.dismiss(animated: true, completion: nil)
+        }, failure: { (error: NSError) in
+          let alertController = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
+
+          let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            // handle response here.
+          }
+          
+          alertController.addAction(OKAction)
+          
+          self.present(alertController, animated: true) {
+          }
+        })
+        
+      }
+    }
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //
+  }
     /*
     // MARK: - Navigation
 

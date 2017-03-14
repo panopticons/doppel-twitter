@@ -18,9 +18,25 @@ class TweetDetailsViewController: UIViewController {
   @IBOutlet weak var favoriteValL: UILabel!
   @IBOutlet weak var dateL: UILabel!
   
+  var name: String!
+  var username: String!
+  var picture: UIImage!
+  var content: String!
+  var retweet: String!
+  var favorite: String!
+  var date: String!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-
+      
+      nameL.text = name
+      usernameL.text = username
+      picB.image = picture
+      contentL.text = content
+      dateL.text = date
+      favoriteValL.text = favorite
+      retweetValL.text = retweet
+      
         // Do any additional setup after loading the view.
     }
 
