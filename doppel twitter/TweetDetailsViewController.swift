@@ -25,6 +25,8 @@ class TweetDetailsViewController: UIViewController {
   var retweet: String!
   var favorite: String!
   var date: String!
+  var user: User!
+  var thisTweet: Tweet!
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +51,16 @@ class TweetDetailsViewController: UIViewController {
     self.dismiss(animated: true, completion: nil)
   }
 
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "reply"
+    {
+        let dest = segue.destination as! UINavigationController
+        let realDest = dest.topViewController as! ComposeViewController
+      
+        realDest.tweet = thisTweet
+      
+    }
+  
     /*
     // MARK: - Navigation
 
@@ -58,5 +70,6 @@ class TweetDetailsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+  }
 
 }

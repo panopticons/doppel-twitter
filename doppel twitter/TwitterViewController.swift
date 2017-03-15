@@ -80,7 +80,6 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
     tweetsTable.dataSource = self
     //tweetsTable.rowHeight = UITableViewAutomaticDimension
     //tweetsTable.estimatedRowHeight = 200
-    
   }
   
   override func didReceiveMemoryWarning() {
@@ -111,17 +110,41 @@ class TwitterViewController: UIViewController, UITableViewDelegate, UITableViewD
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    let dest = segue.destination as! UINavigationController
-    let realDest = dest.topViewController as! TweetDetailsViewController
     
-    realDest.name = (sender as! TweetViewCell).tName.text
-    realDest.username = (sender as! TweetViewCell).tScreen.text
-    realDest.date = (sender as! TweetViewCell).tDate.text
-    realDest.content = (sender as! TweetViewCell).tContent.text
-    realDest.picture = (sender as! TweetViewCell).tPic.image
-    realDest.favorite = (sender as! TweetViewCell).fav
-    realDest.retweet = (sender as! TweetViewCell).ret
-    //realDest.reply = (sender as TweetViewCell).re
+    if segue.identifier == "details"
+    {
+      let dest = segue.destination as! UINavigationController
+
+      let realDest = dest.topViewController as! TweetDetailsViewController
+      
+      realDest.name = (sender as! TweetViewCell).tName.text
+      realDest.username = (sender as! TweetViewCell).tScreen.text
+      realDest.date = (sender as! TweetViewCell).tDate.text
+      realDest.content = (sender as! TweetViewCell).tContent.text
+      realDest.picture = (sender as! TweetViewCell).tPic.image
+      realDest.favorite = (sender as! TweetViewCell).fav
+      realDest.retweet = (sender as! TweetViewCell).ret
+    }
+    if segue.identifier == "realPro"
+    {
+      if let invButton = sender as? UIButton
+      {
+        if let sup = invButton.superview
+        {
+          if let cell = sup.superview as? TweetViewCell
+          {
+            let index = tweetsTable.indexPath(for: cell)
+            let tweet = tweets[index!.item]
+            
+            let dest = segue.destination as! UINavigationController
+            
+            let realDest = dest.topViewController as! ProfileViewController
+            
+            realDest.user = tweet.user
+          }
+        }
+      }
+    }
   }
   
   /*

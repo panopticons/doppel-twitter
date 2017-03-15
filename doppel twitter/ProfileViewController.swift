@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
   @IBOutlet weak var uTable: UITableView!
   @IBOutlet weak var tweetsNumber: UILabel!
@@ -22,11 +22,14 @@ class ProfileViewController: UIViewController {
   var tweets: [Tweet]!
   var user: User?
   
-    override func viewDidLoad() {
+  override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-      //Set up UI
+    
+      uTable.delegate = self
+      uTable.dataSource = self
+    
       self.userImage.layer.borderColor = UIColor.white.cgColor
       self.userImage.layer.borderWidth = 3
       if let profPicUrl = user?.profUrl
@@ -39,6 +42,7 @@ class ProfileViewController: UIViewController {
       }
       self.userT.text = "@\(user!.userName!)"
       self.namet.text = user!.name! as? String
+      self.navigationItem.title = user?.userName as! String
       
       let numberFormatter = NumberFormatter()
       numberFormatter.numberStyle = NumberFormatter.Style.decimal
@@ -47,21 +51,43 @@ class ProfileViewController: UIViewController {
       self.followersNumber.text = numberFormatter.string(from: NSNumber(value: user!.followers!))
       self.followingNumber.text = numberFormatter.string(from: NSNumber(value: user!.following!))
       
-      //Get user tweets
-      TwitterClient.sharedInstance?.userTimeline(myUser: user!.userName as! String, success: { (tweets: [Tweet]) in
+      TwitterClient.sharedInstance?.userTimeline(myUser: User._currentUser?.userName as! String, success: { (tweets: [Tweet]) in
         self.tweets = tweets
         self.uTable.reloadData()
+        
+        
       }, failure: { (error: NSError) in
         print(error.localizedDescription)
       })
-      
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if tweets != nil {
+      print("TEST")
+      return tweets.count
+    }
+    else {
+      return 0
+    }
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "pCell", for: indexPath) as! TweetViewCell
+    cell.tweet = tweets[indexPath.row]
+    //cell.selectionStyle = .none
     
+    return cell
+  }
+  
+  
+  @IBAction func backB(_ sender: Any) {
+    self.dismiss(animated: true, completion: nil)
+  }
 
     /*
     // MARK: - Navigation

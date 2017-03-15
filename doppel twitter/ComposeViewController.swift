@@ -14,20 +14,17 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
   @IBOutlet weak var userN: UILabel!
   @IBOutlet weak var realN: UILabel!
   @IBOutlet weak var compBox: UITextView!
-  @IBOutlet weak var remaining: UILabel!
   var tweet: Tweet?
   
   override func viewDidLoad() {
         super.viewDidLoad()
         compBox.becomeFirstResponder()
-      
       if tweet == nil {
         print("error")
       }
       
       compBox.delegate = self
-      compBox.textColor = UIColor(red: 170/255, green: 184/255, blue: 194/255, alpha: 1)
-      
+    
       TwitterClient.sharedInstance?.currentAccount(success: { (user: User) in
         self.uPic.setImageWith(user.profUrl as! URL)
         self.userN.text = "@\(user.userName!)"
